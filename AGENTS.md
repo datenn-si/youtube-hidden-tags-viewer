@@ -8,9 +8,9 @@ When a repository's documentation and its existing code disagree, follow the con
 
 YouTube Hidden Tags Viewer is a userscript. On a YouTube watch page it shows the video's hidden tags (`videoDetails.keywords`) as chips below the description. A chip opens a YouTube search for that tag. "Copy all" copies the tags, comma-separated, to the clipboard.
 
-Vite and `vite-plugin-monkey` build it. The shipped file is `dist/youtube-hidden-tags.user.js`. That directory is gitignored; CI and the release workflow produce it.
+Vite and `vite-plugin-monkey` build it. The shipped file is `dist/youtube-hidden-tags-viewer.user.js` (`package.json` `name` plus `.user.js`). That directory is gitignored; CI and the release workflow produce it.
 
-`README.md` is the user-facing spec. `CONTRIBUTING.md` is the setup and review bar. `SECURITY.md` is the threat model. Each of those has a `.ja.md` twin that must describe the same thing.
+`README.md` is the user-facing spec. `CONTRIBUTING.md` is the setup and review bar. `SECURITY.md` is the threat model. `README` and `CONTRIBUTING` each have a `.ja.md` twin that must describe the same thing. `SECURITY.md` and `CODE_OF_CONDUCT.md` each contain English, then Japanese.
 
 ## Commands
 
@@ -18,7 +18,7 @@ Requirements: Node.js >= 22.13 and pnpm 12.18.0 (`packageManager` in `package.js
 
 - `pnpm install`
 - `pnpm dev` — dev userscript with HMR. Install the opened `*.proxy.user.js` in a userscript manager.
-- `pnpm build` — writes `dist/youtube-hidden-tags.user.js`
+- `pnpm build` — writes `dist/youtube-hidden-tags-viewer.user.js`
 - `pnpm exec tsc --noEmit`
 - `pnpm lint` / `pnpm lint:fix` — oxlint
 - `pnpm fmt` / `pnpm fmt:check` — oxfmt, single quotes (`.oxfmtrc.json`)
@@ -29,7 +29,7 @@ A finished change passes `pnpm lint`, `pnpm fmt:check`, `pnpm exec tsc --noEmit`
 
 - `src/main.ts` — detection, tag data, rendering, SPA handling
 - `src/i18n.ts` — UI strings. The locale is chosen once, when the module loads.
-- `vite.config.ts` — userscript metadata. `@version` is read from `package.json`.
+- `vite.config.ts` — userscript metadata. `@version` and the output file name are read from `package.json`.
 - `.github/workflows/ci.yml`, `.github/workflows/release.yml`
 
 ## Product behavior
@@ -89,10 +89,10 @@ The root id is `yht-root`. The style element id is `yht-style`. When the video i
 - Comments stay rare. Add one only for a constraint the code itself cannot show, and write it in English. Keep the existing comments accurate when the constraint changes.
 - TypeScript is `strict`, target ES2022. Stay with the current shape: small functions in `src/main.ts`, no new framework, no new runtime package.
 - A new UI language is one entry in `locales` in `src/i18n.ts` (a full tag such as `zh-CN` is valid) plus the same locale on `name` and `description` in `vite.config.ts`.
-- `package.json` `version` is the only version. `vite.config.ts` copies it into `@version`. `@downloadURL` and `@updateURL` both point at `https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags.user.js`. Leave version bumps, tags, and releases alone unless a maintainer asked.
+- `package.json` `version` is the only version. `vite.config.ts` copies it into `@version`, and copies `name` into the output file name (`<name>.user.js`). `@downloadURL` and `@updateURL` both point at `https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags-viewer.user.js`. Leave version bumps, tags, and releases alone unless a maintainer asked.
 - Leave `dist/` unedited. It is a build output.
 - Match oxfmt: single quotes, and the style of the surrounding code.
-- User-facing docs are bilingual. Change `README.md` together with `README.ja.md`, and do the same for `CONTRIBUTING`, `SECURITY`, and `CODE_OF_CONDUCT`.
+- User-facing docs are bilingual. Change `README.md` together with `README.ja.md`, and do the same for `CONTRIBUTING`. In `SECURITY.md` and `CODE_OF_CONDUCT.md`, keep both languages in that one file, English first. Each language starts at `## English` or `## 日本語`, the switch line matches `README`, and the headings under those are one level lower.
 - Vulnerabilities go to a private GitHub advisory (`SECURITY.md`). Only the latest release is supported.
 
 ## Release (maintainers only)
@@ -100,6 +100,6 @@ The root id is `yht-root`. The style element id is `yht-style`. When the video i
 1. Bump `version` in `package.json`.
 2. Commit and push to `main`.
 3. Push a matching tag, for example `v1.1.0`.
-4. `.github/workflows/release.yml` checks that the tag equals the `package.json` version, then lints, checks format, typechecks, builds, and publishes `dist/youtube-hidden-tags.user.js` on the GitHub Release (`gh release create` with generated notes).
+4. `.github/workflows/release.yml` checks that the tag equals the `package.json` version, then lints, checks format, typechecks, builds, and publishes `dist/youtube-hidden-tags-viewer.user.js` on the GitHub Release (`gh release create` with generated notes).
 
 A tag that disagrees with `package.json` fails the workflow.

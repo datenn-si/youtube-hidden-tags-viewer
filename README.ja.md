@@ -23,7 +23,7 @@ YouTube動画に設定された「隠しタグ」を概要欄の下に表示す�
 前提: [Tampermonkey](https://www.tampermonkey.net/) や [Violentmonkey](https://violentmonkey.github.io/) などのユーザースクリプトマネージャがブラウザに入っていること。
 
 1. 最新版のスクリプトを開きます:
-   <https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags.user.js>
+   <https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags-viewer.user.js>
 2. マネージャのインストール確認画面が表示されるので、インストールします
 
 インストール後は、マネージャがこのURLを更新元として記憶し、新しいリリースが出ると自動更新されます（`@downloadURL` / `@updateURL` も同じURLを指しています）。
@@ -46,7 +46,7 @@ YouTubeのモバイル版動画ページ（`m.youtube.com/watch`）を開くだ�
 
 ## セキュリティ
 
-脆弱性の報告方法は [SECURITY.ja.md](SECURITY.ja.md) を参照してください。
+脆弱性の報告方法は [SECURITY.md](SECURITY.md#日本語) を参照してください。
 
 ## ライセンス
 

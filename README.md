@@ -23,7 +23,7 @@ A userscript that displays the hidden tags set on a YouTube video below the desc
 Prerequisite: a userscript manager such as [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/) installed in your browser.
 
 1. Open the latest script:
-   <https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags.user.js>
+   <https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags-viewer.user.js>
 2. Confirm the installation in your userscript manager
 
 After installation, the manager remembers this URL as the update source, so new releases are picked up automatically (`@downloadURL` / `@updateURL` point to the same URL).

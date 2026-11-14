@@ -2,12 +2,13 @@ import { readFileSync } from 'node:fs';
 import { defineConfig } from 'vite';
 import monkey from 'vite-plugin-monkey';
 
-const { version } = JSON.parse(
+const { name, version } = JSON.parse(
   readFileSync(new URL('./package.json', import.meta.url), 'utf8'),
-) as { version: string };
+) as { name: string; version: string };
 
-const downloadURL =
-  'https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/youtube-hidden-tags.user.js';
+const fileName = `${name}.user.js`;
+
+const downloadURL = `https://github.com/datenn-si/youtube-hidden-tags-viewer/releases/latest/download/${fileName}`;
 
 export default defineConfig({
   plugins: [
@@ -35,7 +36,7 @@ export default defineConfig({
         updateURL: downloadURL,
       },
       build: {
-        fileName: 'youtube-hidden-tags.user.js',
+        fileName,
       },
     }),
   ],

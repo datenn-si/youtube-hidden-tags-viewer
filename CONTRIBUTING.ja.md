@@ -14,7 +14,7 @@
 ```sh
 pnpm install
 pnpm dev      # 開発用ユーザースクリプト（HMR対応）。開かれた *.proxy.user.js をマネージャにインストールする
-pnpm build    # dist/youtube-hidden-tags.user.js を生成
+pnpm build    # dist/youtube-hidden-tags-viewer.user.js を生成
 pnpm exec tsc --noEmit   # 型チェック
 ```
 
@@ -40,6 +40,6 @@ Pull Request を出す前に、`pnpm lint`、`pnpm fmt:check`、`pnpm exec tsc -
 1. `package.json` の `version` を上げる
 2. コミットして `main` にプッシュする
 3. 同じバージョンでタグを打ってプッシュする（例: `git tag v1.1.0 && git push origin v1.1.0`）
-4. GitHub Actions の Release ワークフローが、タグと `package.json` のバージョン一致を確認した上で、lint、フォーマットチェック、型チェック、ビルドを行い、`dist/youtube-hidden-tags.user.js` を添付した GitHub Release を作成します
+4. GitHub Actions の Release ワークフローが、タグと `package.json` のバージョン一致を確認した上で、lint、フォーマットチェック、型チェック、ビルドを行い、`dist/youtube-hidden-tags-viewer.user.js` を添付した GitHub Release を作成します
 
 タグとバージョンが一致しない場合、ワークフローは失敗します。

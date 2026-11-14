@@ -14,7 +14,7 @@ Thank you for contributing. Please use Issues for bug reports and feature reques
 ```sh
 pnpm install
 pnpm dev      # dev userscript with HMR; install the *.proxy.user.js it opens in your manager
-pnpm build    # outputs dist/youtube-hidden-tags.user.js
+pnpm build    # outputs dist/youtube-hidden-tags-viewer.user.js
 pnpm exec tsc --noEmit   # type check
 ```
 
@@ -40,6 +40,6 @@ The single source of truth for the version is `version` in `package.json` (`vite
 1. Bump `version` in `package.json`
 2. Commit and push to `main`
 3. Tag the same version and push the tag (e.g. `git tag v1.1.0 && git push origin v1.1.0`)
-4. The Release workflow in GitHub Actions verifies that the tag matches the `package.json` version, then lints, checks formatting, typechecks, builds, and creates a GitHub Release with `dist/youtube-hidden-tags.user.js` attached
+4. The Release workflow in GitHub Actions verifies that the tag matches the `package.json` version, then lints, checks formatting, typechecks, builds, and creates a GitHub Release with `dist/youtube-hidden-tags-viewer.user.js` attached
 
 If the tag and the version do not match, the workflow fails.

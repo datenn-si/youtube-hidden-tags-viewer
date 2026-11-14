@@ -42,5 +42,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
-          name: youtube-hidden-tags.user.js
-          path: dist/youtube-hidden-tags.user.js
+          name: youtube-hidden-tags-viewer.user.js
+          path: dist/youtube-hidden-tags-viewer.user.js
